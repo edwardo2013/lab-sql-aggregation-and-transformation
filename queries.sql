@@ -14,8 +14,9 @@ from film;
 -- 1.2 Express the average movie duration in hours and minutes. Don't use decimals.
 -- Hint: Look for floor and round functions.
 select (floor((round(avg(length))/60)) ) as hour,
-      (round(avg(length))%60) as `minutes` -- modulo operator
-from film;
+      (round(avg(length))%60) as `minutes`, -- modulo operator
+      concat(floor(round(avg(length))/60),'h ',(round(avg(length))%60),'mm') as avg_time
+from film; -- can also use SEC_TO_TIME(avg(length)*60)
 
 -- 2.1) Calculate the number of days that the company has been operating.
 -- Hint: To do this, use the rental table, and the DATEDIFF() function to subtract the earliest date in the rental_date 
